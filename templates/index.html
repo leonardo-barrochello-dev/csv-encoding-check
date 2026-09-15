@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Encoding Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CSV Encoding Checker</h1>
+        <p class="subtitle">Verifique caracteres incompatíveis com o encoding selecionado</p>
+        
+        <form id="checkForm">
+            <div class="form-group">
+                <label for="file">Arquivo CSV</label>
+                <input type="file" id="file" name="file" accept=".csv" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="encoding">Encoding de Destino</label>
+                <select id="encoding" name="encoding" required>
+                    <option value="ascii">ASCII</option>
+                    <option value="utf-8">UTF-8</option>
+                    <option value="latin-1">Latin-1 (ISO-8859-1)</option>
+                    <option value="cp1252">Windows-1252</option>
+                    <option value="utf-16">UTF-16</option>
+                </select>
+            </div>
+            
+            <button type="submit" id="submitBtn">Verificar Encoding</button>
+        </form>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processando arquivo...</p>
+        </div>
+        
+        <div class="error" id="error"></div>
+        
+        <div class="results" id="results">
+            <div class="summary" id="summary"></div>
+            <div id="violationsTable"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
